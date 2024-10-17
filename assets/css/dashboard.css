@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+    border-bottom: 1px solid var(--Neutral-200, #EFEFEF);
+    background: #FFF;
+    padding: 25px 25px;
+    position: fixed;
+    z-index: 11;
+    width: calc(100% - 241px);
+
+}
+
+.top-nav .search-bar {
+    display: flex;
+    align-items: center;
+    padding: 10px 9px;
+    border-radius: 8px;
+    border: 1px solid var(--Neutral-200, #EFEFEF);
+    flex-grow: 1;
+    max-width: 775px;
+    height: 48px;
+}
+
+.top-nav .search-bar i {
+    color: #3D3D3D;
+    margin-right: 10px;
+}
+
+.top-nav .search-bar input::placeholder {
+    color: var(--Neutral-400, #999);
+    /* Body text */
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.top-nav .search-bar input {
+    border: none;
+    background: none;
+    outline: none;
+    flex-grow: 1;
+    color: #000;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.top-nav .nav-items {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.top-nav .notification {
+    position: relative;
+    /* margin-right: 20px; */
+}
+
+/* .top-nav .notification i {
+    color: #3D3D3D;
+    font-size: 20px;
+}
+
+.top-nav .notification .badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 10px;
+} */
+
+.top-nav .language-selector {
+    display: flex;
+    align-items: center;
+    /* margin-right: 20px; */
+    gap: 16px;
+}
+
+.top-nav .language-selector .flag {
+    width: 40px;
+    height: 27px;
+    /* margin-right: 5px; */
+    border-radius: 5px;
+}
+
+.top-nav .language-selector span {
+    color: red;
+    margin-right: 5px;
+}
+
+.top-nav .profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.top-nav .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* margin-right: 10px; */
+}
+
+.top-nav .user-info {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.top-nav .user-name {
+    color: #000;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.top-nav select {
+    color: #F2F2F2;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.top-nav select.bg-transparent.border-0:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+.main-dashboard {
+    padding: 130px 32px 30px;
+    /* background-color: #121212; */
+}
+
+.dashboard-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+
+}
+
+.dashboard-header h2 {
+    color: red;
+    font-family: Poppins;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.114px;
+}
+
+.sr-toggle {
+    display: none;
+}
+
+
+
+
+.side-bar-right .offcanvas {
+    background-color: #121212;
+    border-left: 2px solid #594f4f !important;
+    max-width: 250px;
+    padding: 0 !important;
+}
+
+.side-bar-right .offcanvas-header {
+    justify-content: flex-end;
+}
+
+.side-bar-right .offcanvas-header button {
+    padding: 2px 10px;
+    border: none;
+    border-radius: 4px;
+}
+
+.side-bar-right .offcanvas-body {
+    padding: 0;
+}
+
+.side-bar-right .offcanvas-body .top-nav {
+    background-color: transparent;
+}
+
+.right-off-canvus {
+    display: none;
+}
+
+
+@media screen and (max-width: 1280px) {
+    .list-card .list-icon svg {
+        width: 45px;
+    }
+
+    /* .list-card {
+    padding: 16px 8px;
+} */
+    .up-from {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .sr-toggle {
+        display: block;
+    }
+    .main {
+        padding-left: 0;
+        position: sticky;
+    }
+    .top-nav {
+        width: 100%;
+    }
+}
+
+
+
+@media screen and (max-width: 991px) {
+
+    /* .top-nav {
+        background-color: transparent;
+    } */
+    /* .top-nav .nav-items {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+} */
+    /* .top-nav-language-select,
+    .web-profile {
+        display: none !important;
+    } */
+
+    .right-off-canvus {
+        display: block;
+        background: white;
+        border-radius: 2px;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .main-dashboard {
+        padding: 32px 6px 38px;
+    }
+
+    td {
+        padding: 12px 10px;
+        font-size: 12px;
+    }
+
+    .dashboard-header h2 {
+        font-size: 24px;
+        line-height: normal;
+    }
+
+    .dashboard-header a,
+    .dashboard-header .active {
+        font-size: 14px;
+        line-height: normal;
+    }
+
+    .top-nav {
+        padding: 16px 8px;
+    }
+
+    .right-off-canvus button {
+        padding: 2px;
+    }
+
+    .list-card .user-no {
+        padding-top: 10px;
+        font-size: 20px;
+    }
+
+    .chart-container .chart-title {
+        font-size: 20px;
+    }
+
+    #salesChart {
+        height: 150px !important;
+    }
+
+    .station-list-table {
+        padding: 24px 12px;
+    }
+}
+
+@media screen and (max-width: 426px) {
+
+    .Tenant-buttons .Tenant2-btn,
+    .Tenant-buttons .Landlord2btn {
+        font-size: 12px;
+    }
+
+    .recent-inquiries {
+        padding: 12px 8px;
+    }
+
+    .side-bar-right .offcanvas {
+        max-width: 200px;
+    }
+}
+
+
+
+/* .dashboard-header h2 {
+    font-size: 20px;
+    line-height: normal;
+} */

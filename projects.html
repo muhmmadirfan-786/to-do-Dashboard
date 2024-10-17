@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="title" content="Dashboard | TO DO Dashboard">
+  <meta name="description"
+    content="TO DO Dashboard - Streamline task management and project tracking. Log in to organize, monitor, and control your tasks with ease.">
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/images/icons/favicon.svg" type="image/fav-icon">
+  <!-- bootstrap 5.3.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- font-owsme -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/myStyle.css">
+  <link rel="stylesheet" href="/assets/css/navigation.css">
+  <link rel="stylesheet" href="/assets/css/dashboard.css">
+  <title>Dashboard | To-Do Dashboard</title>
+  <style>
+    .epic-list { 
+        background-color: #f8f9fa; 
+        padding: 20px; 
+        height: 100vh;
+    }
+    .epic-item { 
+        display: flex; 
+        justify-content: space-between;
+        /* flex-wrap: wrap;  */
+        margin-bottom: 10px;
+    }
+    .epic-label {
+        font-weight: bold;
+    }
+    .task-status {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .task-item {
+        border-bottom: 1px solid #dee2e6;
+        padding: 10px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+    .issue-label {
+        background-color: #e9ecef;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 0.8rem;
+    }
+    .issue-id {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+</style>
+</head>
+
+<body>
+  <div class="d-flex main-layout show">
+    <aside class="sidebar w-100">
+      <ul class="navigation-ul list-unstyled">
+        <div class="">
+          <li class="d-flex justify-content-lg-center justify-content-between gap-3 pb_60">
+            <a href="dashboard.html">
+              <img src="assets/images/icons/logo-todo.svg" width="100%">
+            </a>
+            <button type="button" class="border-0 bg-transparent toggle-btn sr-toggle">
+              <i style="color: #000;" class="fa-solid fa-forward"></i>
+            </button>
+          </li>
+          <li class="navigation-item mt-4">
+            <a href="dashboard.html" class="navigation-link text-decoration-none d-flex align-items-center gap-3 ">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M3.75 4.5C3.75 4.08579 4.08579 3.75 4.5 3.75H10.5C10.9142 3.75 11.25 4.08579 11.25 4.5V12.5C11.25 12.9142 10.9142 13.25 10.5 13.25H4.5C4.08579 13.25 3.75 12.9142 3.75 12.5V4.5ZM5.25 5.25V11.75H9.75V5.25H5.25Z"
+                  fill="#14367B" />
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M3.75 16.5C3.75 16.0858 4.08579 15.75 4.5 15.75H10.5C10.9142 15.75 11.25 16.0858 11.25 16.5V20.5C11.25 20.9142 10.9142 21.25 10.5 21.25H4.5C4.08579 21.25 3.75 20.9142 3.75 20.5V16.5ZM5.25 17.25V19.75H9.75V17.25H5.25Z"
+                  fill="#14367B" />
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M13.75 12.5C13.75 12.0858 14.0858 11.75 14.5 11.75H20.5C20.9142 11.75 21.25 12.0858 21.25 12.5V20.5C21.25 20.9142 20.9142 21.25 20.5 21.25H14.5C14.0858 21.25 13.75 20.9142 13.75 20.5V12.5ZM15.25 13.25V19.75H19.75V13.25H15.25Z"
+                  fill="#14367B" />
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M13.75 4.5C13.75 4.08579 14.0858 3.75 14.5 3.75H20.5C20.9142 3.75 21.25 4.08579 21.25 4.5V8.5C21.25 8.91421 20.9142 9.25 20.5 9.25H14.5C14.0858 9.25 13.75 8.91421 13.75 8.5V4.5ZM15.25 5.25V7.75H19.75V5.25H15.25Z"
+                  fill="#14367B" />
+              </svg>
+              <span class="flex-grow-1 fs_16 fw_500 lh_normal primray_text_700">Dashboard</span>
+            </a>
+          </li>
+  
+          <li class="navigation-item mt-3">
+            <a href="projects.html" class="navigation-link text-decoration-none d-flex align-items-center gap-3 active %">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M9.5 5.25C9.16848 5.25 8.85054 5.3817 8.61612 5.61612C8.3817 5.85054 8.25 6.16848 8.25 6.5V15.5C8.25 15.8315 8.3817 16.1495 8.61612 16.3839C8.85054 16.6183 9.16848 16.75 9.5 16.75H19.5C19.8315 16.75 20.1495 16.6183 20.3839 16.3839C20.6183 16.1495 20.75 15.8315 20.75 15.5V8.5C20.75 8.16848 20.6183 7.85054 20.3839 7.61612C20.1495 7.3817 19.8315 7.25 19.5 7.25H14.5C14.3011 7.25 14.1103 7.17098 13.9697 7.03033L12.1893 5.25H9.5ZM7.55546 4.55546C8.07118 4.03973 8.77065 3.75 9.5 3.75H12.5C12.6989 3.75 12.8897 3.82902 13.0303 3.96967L14.8107 5.75H19.5C20.2293 5.75 20.9288 6.03973 21.4445 6.55546C21.9603 7.07118 22.25 7.77065 22.25 8.5V15.5C22.25 16.2293 21.9603 16.9288 21.4445 17.4445C20.9288 17.9603 20.2293 18.25 19.5 18.25H9.5C8.77065 18.25 8.07118 17.9603 7.55546 17.4445C7.03973 16.9288 6.75 16.2293 6.75 15.5V6.5C6.75 5.77065 7.03973 5.07118 7.55546 4.55546Z"
+                  fill="#14367B" />
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M5.5 9.25C5.16848 9.25 4.85054 9.3817 4.61612 9.61612C4.3817 9.85054 4.25 10.1685 4.25 10.5V19.5C4.25 19.8315 4.3817 20.1495 4.61612 20.3839C4.85054 20.6183 5.16848 20.75 5.5 20.75H15.5C15.8315 20.75 16.1495 20.6183 16.3839 20.3839C16.6183 20.1495 16.75 19.8315 16.75 19.5V17.5C16.75 17.0858 17.0858 16.75 17.5 16.75C17.9142 16.75 18.25 17.0858 18.25 17.5V19.5C18.25 20.2293 17.9603 20.9288 17.4445 21.4445C16.9288 21.9603 16.2293 22.25 15.5 22.25H5.5C4.77065 22.25 4.07118 21.9603 3.55546 21.4445C3.03973 20.9288 2.75 20.2293 2.75 19.5V10.5C2.75 9.77065 3.03973 9.07118 3.55546 8.55546C4.07118 8.03973 4.77065 7.75 5.5 7.75H7.5C7.91421 7.75 8.25 8.08579 8.25 8.5C8.25 8.91421 7.91421 9.25 7.5 9.25H5.5Z"
+                  fill="#14367B" />
+              </svg>
+              <span class="flex-grow-1 fs_16 fw_500 lh_normal primray_text_700">Projects</span>
+            </a>
+          </li>
+          <li class="navigation-item mt-3">
+            <a href="#" class="navigation-link text-decoration-none d-flex align-items-center gap-3 ">
+              <i style="color: #14367B;" class="fa-solid fa-list-check"></i>
+              <span class="flex-grow-1 fs_16 fw_500 lh_normal primray_text_700">Manage Tasks</span>
+            </a>
+          </li>
+        </div>
+        <div class="">
+          <li class="navigation-item mt-4">
+            <a href="dashboard.html" class="navigation-link text-decoration-none d-flex align-items-center gap-3 ">
+              
+              <i style="color: #14367B;" class="fa-solid fa-right-from-bracket"></i>
+              <span class="flex-grow-1 fs_16 fw_500 lh_normal primray_text_700">Log Out</span>
+            </a>
+          </li>
+  
+          <li class="navigation-item mt-3">
+            <a href="projects.html" class="navigation-link text-decoration-none d-flex align-items-center gap-3">
+              <i style="color: #14367B;" class="fa-solid fa-gear"></i>
+              <span class="flex-grow-1 fs_16 fw_500 lh_normal primray_text_700">Settings</span>
+            </a>
+          </li>
+        </div>
+       
+      </ul>
+    </aside>
+
+    <div class="main flex-grow-1" style="max-width:100%">
+      <div class="top-nav">
+        <div style="max-width: 775px;" class="d-flex gap-md-4 gap-1 w-100">
+          <button type="button" class="border-0 bg-transparent toggle-btn sr-toggle">
+            <i style="color: #000;" class="fa-solid fa-bars"></i>
+          </button>
+          <div class="search-bar d-sm-flex d-none">
+            <input type="text" placeholder="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <button class="bg-transparent border-0 d-sm-none d-block">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+
+        <div class="nav-items">
+          <div class="d-flex align-items-center gap-md-4 gap-0">
+            <div class="dropdown notification-dropdown">
+              <button class="btn btn-link p-0 notification" type="button" id="notificationDropdown"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M16.0007 5C15.5587 5 15.1348 5.17559 14.8222 5.48816C14.5097 5.80072 14.3341 6.22464 14.3341 6.66667C14.3341 7.05336 14.1111 7.4054 13.7615 7.5707C12.3944 8.21716 11.2289 9.22346 10.3901 10.4818C9.55541 11.7337 9.07539 13.1882 9.00074 14.6908V18.6667C9.00074 18.7068 8.99832 18.747 8.9935 18.7868C8.87434 19.7712 8.52572 20.7138 7.97571 21.5389C7.94705 21.5819 7.91789 21.6245 7.88823 21.6667H24.1133C24.0836 21.6245 24.0544 21.5819 24.0258 21.5389C23.4758 20.7138 23.1271 19.7712 23.008 18.7868C23.0032 18.747 23.0007 18.7068 23.0007 18.6667V14.6908C22.9261 13.1882 22.4461 11.7338 21.6114 10.4818C20.7726 9.22346 19.6071 8.21716 18.2399 7.5707C17.8904 7.4054 17.6674 7.05336 17.6674 6.66667C17.6674 6.22464 17.4918 5.80072 17.1793 5.48816C16.8667 5.17559 16.4428 5 16.0007 5ZM13.408 4.07394C14.0957 3.38631 15.0283 3 16.0007 3C16.9732 3 17.9058 3.38631 18.5935 4.07394C19.1278 4.60827 19.4802 5.29054 19.6108 6.02448C21.0837 6.8247 22.3425 7.97283 23.2755 9.37237C24.3157 10.9327 24.9117 12.7466 24.9996 14.6198C25.0004 14.6354 25.0007 14.651 25.0007 14.6667V18.6032C25.0885 19.2562 25.3241 19.8808 25.6899 20.4295C26.0662 20.994 26.5698 21.4622 27.1602 21.7965C27.5554 22.0203 27.7501 22.4823 27.6344 22.9215C27.5187 23.3606 27.1216 23.6667 26.6674 23.6667H5.33408C4.87992 23.6667 4.48279 23.3606 4.36708 22.9215C4.25137 22.4823 4.44613 22.0203 4.84132 21.7965C5.43167 21.4622 5.93528 20.994 6.31161 20.4295C6.67736 19.8808 6.91294 19.2562 7.00074 18.6032V14.6667C7.00074 14.651 7.00111 14.6354 7.00184 14.6198C7.08976 12.7466 7.68576 10.9327 8.72596 9.37237C9.65898 7.97283 10.9178 6.8247 12.3907 6.02448C12.5213 5.29054 12.8737 4.60827 13.408 4.07394Z"
+                    fill="#3D3D3D" />
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M12 21.6667C12.5523 21.6667 13 22.1145 13 22.6667V24.0001C13 24.7957 13.3161 25.5588 13.8787 26.1214C14.4413 26.684 15.2044 27.0001 16 27.0001C16.7957 27.0001 17.5587 26.684 18.1213 26.1214C18.6839 25.5588 19 24.7957 19 24.0001V22.6667C19 22.1145 19.4477 21.6667 20 21.6667C20.5523 21.6667 21 22.1145 21 22.6667V24.0001C21 25.3262 20.4732 26.5979 19.5355 27.5356C18.5979 28.4733 17.3261 29.0001 16 29.0001C14.6739 29.0001 13.4021 28.4733 12.4645 27.5356C11.5268 26.5979 11 25.3262 11 24.0001V22.6667C11 22.1145 11.4477 21.6667 12 21.6667Z"
+                    fill="#3D3D3D" />
+                  <circle cx="22.6673" cy="8.00008" r="5.33333" fill="#EE3E17" />
+                </svg>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown">
+                <li><a class="dropdown-item" href="#">Notification 1</a></li>
+                <li><a class="dropdown-item" href="#">Notification 2</a></li>
+                <li><a class="dropdown-item" href="#">Notification 3</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="profile web-profile">
+            <img src="assets/images/icons/drop-author.svg" alt="Profile" class="profile-pic">
+            <div class="user-info">
+              <span class="user-name">Alison</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- main-dashboard -->
+      <div class="main-dashboard overflow-hidden">
+        <!-- <div class="d-flex justify-content-between flex-wrap gap-3">
+          <h2 class="fs_28 lh_normal fw_500 black2_text">To Do Tasks</h2>
+          <div class="d-flex gap-4 align-items-center flex-wrap gap-3 ps-ms-0 ps-4">
+            <div class="avatar-group">
+              <div class="avatar">
+                <img
+                  src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/user/12.jpg" />
+              </div>
+
+              <div class="avatar">
+                <img src="https://htmlstream.com/preview/unify-v2.6.2/assets/img-temp/400x450/img5.jpg" />
+              </div>
+
+              <div class="avatar">
+                <img
+                  src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+              </div>
+
+              <div class="avatar">
+                <img
+                  src="https://rimage.gnst.jp/livejapan.com/public/article/detail/a/00/04/a0004213/img/basic/a0004213_main.jpg?20200710184501&q=80&rw=750&rh=536" />
+              </div>
+
+              <div class="avatar">
+                <img
+                  src="https://da4e1j5r7gw87.cloudfront.net/wp-content/uploads/sites/768/2018/08/glasses-american-man-20s-hipster.jpg" />
+              </div>
+              <div class="avatar avatar-no">
+                +9
+              </div>
+            </div>
+            <a class="text-decoration-none btn btn-primary fs_14 fw_600" href="#">+ New Member</a>
+          </div>
+        </div> -->
+   
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
+                        <h5>Sprint 3 - 5 Issues</h5>
+                        <!-- <button class="btn btn-primary">Complete Sprint</button> -->
+                    </div>
+                    <div class="task-list">
+                        <div class="task-item">
+                            <div>
+                                <span class="issue-id">NUC-335</span> Affilite links integration - frontend
+                            </div>
+                            <div class="task-status">
+                                <span class="issue-label bg-success">Billing</span>
+                                <img src="assets/images/icons/author-1.svg" class="rounded-circle" alt="User" width="30">
+                            </div>
+                        </div>
+        
+                        <div class="task-item">
+                            <div>
+                                <span class="issue-id">NUC-342</span> Fast trip search
+                            </div>
+                            <div class="task-status">
+                                <span class="issue-label bg-primary">Accounts</span>
+                                <img src="assets/images/icons/author-2.svg" class="rounded-circle" alt="User" width="30">
+                            </div>
+                        </div>
+        
+                        <div class="task-item">
+                            <div>
+                                <span class="issue-id">NUC-341</span> Quick payment
+                            </div>
+                            <div class="task-status">
+                                <span class="issue-label bg-info">Feedback</span>
+                                <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/user/12.jpg" class="rounded-circle" alt="User" width="30">
+                            </div>
+                        </div>
+        
+                        <div class="task-item">
+                            <div>
+                                <span class="issue-id">NUC-360</span> Onboard workout options (OWO)
+                            </div>
+                            <div class="task-status">
+                                <span class="issue-label bg-primary">Accounts</span>
+                                <img src="https://htmlstream.com/preview/unify-v2.6.2/assets/img-temp/400x450/img5.jpg" class="rounded-circle" alt="User" width="30">
+                            </div>
+                        </div>
+                        <div class="task-item">
+                            <div>
+                                <span class="issue-id">NUC-335</span> Affilite links integration - frontend
+                            </div>
+                            <div class="task-status">
+                                <span class="issue-label bg-success">Billing</span>
+                                <img src="assets/images/icons/author-1.svg" class="rounded-circle" alt="User" width="30">
+                            </div>
+                        </div>
+        
+                        <div class="task-item">
+                            <div>
+                                <span class="issue-id">NUC-342</span> Fast trip search
+                            </div>
+                            <div class="task-status">
+                                <span class="issue-label bg-primary">Accounts</span>
+                                <img src="assets/images/icons/author-2.svg" class="rounded-circle" alt="User" width="30">
+                            </div>
+                        </div>
+        
+                        <div class="task-item">
+                            <div>
+                                <span class="issue-id">NUC-341</span> Quick payment
+                            </div>
+                            <div class="task-status">
+                                <span class="issue-label bg-info">Feedback</span>
+                                <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/user/12.jpg" class="rounded-circle" alt="User" width="30">
+                            </div>
+                        </div>
+        
+                        <div class="task-item">
+                            <div>
+                                <span class="issue-id">NUC-360</span> Onboard workout options (OWO)
+                            </div>
+                            <div class="task-status">
+                                <span class="issue-label bg-primary">Accounts</span>
+                                <img src="https://htmlstream.com/preview/unify-v2.6.2/assets/img-temp/400x450/img5.jpg" class="rounded-circle" alt="User" width="30">
+                            </div>
+                        </div>
+                        <div class="task-item">
+                            <div>
+                                <span class="issue-id">NUC-335</span> Affilite links integration - frontend
+                            </div>
+                            <div class="task-status">
+                                <span class="issue-label bg-success">Billing</span>
+                                <img src="assets/images/icons/author-1.svg" class="rounded-circle" alt="User" width="30">
+                            </div>
+                        </div>
+        
+                        <div class="task-item">
+                            <div>
+                                <span class="issue-id">NUC-342</span> Fast trip search
+                            </div>
+                            <div class="task-status">
+                                <span class="issue-label bg-primary">Accounts</span>
+                                <img src="assets/images/icons/author-2.svg" class="rounded-circle" alt="User" width="30">
+                            </div>
+                        </div>
+        
+                        <div class="task-item">
+                            <div>
+                                <span class="issue-id">NUC-341</span> Quick payment
+                            </div>
+                            <div class="task-status">
+                                <span class="issue-label bg-info">Feedback</span>
+                                <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/user/12.jpg" class="rounded-circle" alt="User" width="30">
+                            </div>
+                        </div>
+        
+                        <div class="task-item">
+                            <div>
+                                <span class="issue-id">NUC-360</span> Onboard workout options (OWO)
+                            </div>
+                            <div class="task-status">
+                                <span class="issue-label bg-primary">Accounts</span>
+                                <img src="https://htmlstream.com/preview/unify-v2.6.2/assets/img-temp/400x450/img5.jpg" class="rounded-circle" alt="User" width="30">
+                            </div>
+                        </div>
+                        <div class="task-item">
+                            <div>
+                                <span class="issue-id">NUC-335</span> Affilite links integration - frontend
+                            </div>
+                            <div class="task-status">
+                                <span class="issue-label bg-success">Billing</span>
+                                <img src="assets/images/icons/author-1.svg" class="rounded-circle" alt="User" width="30">
+                            </div>
+                        </div>
+        
+                        <div class="task-item">
+                            <div>
+                                <span class="issue-id">NUC-342</span> Fast trip search
+                            </div>
+                            <div class="task-status">
+                                <span class="issue-label bg-primary">Accounts</span>
+                                <img src="assets/images/icons/author-2.svg" class="rounded-circle" alt="User" width="30">
+                            </div>
+                        </div>
+        
+                        <div class="task-item">
+                            <div>
+                                <span class="issue-id">NUC-341</span> Quick payment
+                            </div>
+                            <div class="task-status">
+                                <span class="issue-label bg-info">Feedback</span>
+                                <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/user/12.jpg" class="rounded-circle" alt="User" width="30">
+                            </div>
+                        </div>
+        
+                        <div class="task-item">
+                            <div>
+                                <span class="issue-id">NUC-360</span> Onboard workout options (OWO)
+                            </div>
+                            <div class="task-status">
+                                <span class="issue-label bg-primary">Accounts</span>
+                                <img src="https://htmlstream.com/preview/unify-v2.6.2/assets/img-temp/400x450/img5.jpg" class="rounded-circle" alt="User" width="30">
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <!-- External Libraries -->
+  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/45226/dragula.min.js"></script>
+  <script src="/assets/js/script.js"></script>
+  <script src="/assets/js/drag_script.js"></script>
+
+</body>
+
+</html>

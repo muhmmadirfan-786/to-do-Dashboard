@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="Dashboard | TO DO Dashboard">
+  <meta name="description"
+    content="TO DO Dashboard - Streamline task management and project tracking. Log in to organize, monitor, and control your tasks with ease.">
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/images/icons/favicon.svg" type="image/fav-icon">
+  <!-- bootstrap 5.3.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="assets/css/myStyle.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+
+  <title>Login | To-Do Dashboard</title>
+  <style>
+ 
+
+    .toggle-password {
+      font-size: 18px;
+      color: #555;
+    }
+
+    /* body {
+      background: #000;
+    } */
+  </style>
+</head>
+
+<body>
+  <section style="min-height: 100vh;" class="login-section d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="login-img position-relative">
+            <img class="login-img" src="assets/images/login-bg.jpg" width="100%" height="100%">
+            <div style="bottom: 100px; left: 63px;" >
+             <a href="dashboard.html"><img src="assets/images/icons/logo-todo.svg"></a> 
+              <p class="fs_16 black_text fw_500 pt-3">Welcome To Do Dashboard</p>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-6 log-colom1">
+          <div class="login-detail">
+            <h2 class="fs_32 fw_600 black_text">Login</h2>
+            <p class="fs_16 fw_400 black_text pt-3">Log in to your account.</p>
+            <form class="login-form">
+              <div class="mb-3 position-relative">
+                <label for="exampleInputEmail1" class="form-label fs_14 fw_400 black_text">Email address</label>
+                <input type="email" id="exampleInputEmail1" name="email" placeholder="Enter your email">
+              </div>
+              <div class="mb-3 position-relative">
+                <label for="exampleInputPassword1" class="form-label fs_14 fw_400 black_text">Password</label>
+                <input type="password" id="exampleInputPassword1" name="password" placeholder="Enter your Password">
+                <i class="fa fa-eye toggle-password position-absolute"
+                  style="right: 15px; top: 69%; transform: translateY(-50%); cursor: pointer;"></i>
+              </div>
+              <div class="d-flex justify-content-end">
+                <a class="primray_text_700 fw_500 fs_16" href="#">Forgot password?</a>
+              </div>
+              <button type="submit" class="btn btn-primary w-100 mt-4">Login</button>
+            </form>
+
+           
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ************************Scripts Start Here*********************************-->
+
+  <!--------------------------------- Jquery --------------------------->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-------------------------------- Jquery Ends------------------------------->
+
+  <!--------------------------------- Popper Js ------------------------------->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <!--------------------------------- Popper Js Ends----------------------------->
+
+  <!--------------------------------- Bootstrap 5 cdn ---------------------------->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <!------------------------------------ Bootstrap 5 cdn Ends--------------------->
+
+  <!-- valdation -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
+  <script src="assets/js/script.js"></script>
+  <script>
+   $(document).ready(function () {
+  // Custom method to check for numbers in name fields
+  $.validator.addMethod("noNumbers", function (value, element) {
+    return this.optional(element) || /^[a-zA-Z\s]+$/.test(value);
+  }, "Please do not use numbers");
+
+  // Initialize form validation
+  $('.login-form').validate({
+    errorClass: 'error',
+    rules: {
+      email: {
+        required: true,
+        email: true
+      },
+      password: {
+        required: true,
+        minlength: 6
+      },
+    },
+    messages: {
+      email: {
+        required: "Please enter your email",
+        email: "Please enter a valid email address"
+      },
+      password: {
+        required: "Please enter a password",
+        minlength: "Your password must be at least 6 characters long"
+      },
+    },
+    invalidHandler: function (form, validator) {
+      console.log("Form validation failed.");
+    },
+  submitHandler: function(form) {
+     
+     window.location.href = 'dashboard.html';
+}
+
+  });
+});
+
+
+    $(document).ready(function () {
+      // Toggle the password visibility
+      $('.toggle-password').on('click', function () {
+        var passwordField = $('#exampleInputPassword1');
+        var passwordFieldType = passwordField.attr('type');
+        if (passwordFieldType === 'password') {
+          passwordField.attr('type', 'text');
+          $(this).removeClass('fa-eye').addClass('fa-eye-slash');
+        } else {
+          passwordField.attr('type', 'password');
+          $(this).removeClass('fa-eye-slash').addClass('fa-eye');
+        }
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>
